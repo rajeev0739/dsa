@@ -2,7 +2,7 @@ package com.rajeev.dsa.linkedlist;
 
 
 
-public class SLL<T> {
+public class Sll<T> {
 	
 	private transient Node<T> head;
 

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class SLLTest {
 	public static void main(String[] args) {
-		SLL<Integer> sll=new SLL<Integer>();
+		Sll<Integer> sll=new Sll<Integer>();
 		
 		System.out.println("Singly Linked List Test\n"); 
 		int choice;
@@ -48,7 +48,7 @@ public class SLLTest {
 	            System.out.println("Enter integer element to insert");
 	            int data=scan.nextInt();
 	            // Create Node Using Static class
-	            SLL.Node<Integer> newNode=new SLL.Node<Integer>(data);
+	            Sll.Node<Integer> newNode=new Sll.Node<Integer>(data);
 	           
 	            sll.insertFront(newNode);
 	            break;                          
@@ -56,7 +56,7 @@ public class SLLTest {
 	            System.out.println("Enter integer element to insert");
 	            data=scan.nextInt();
 	           
-	            newNode=new SLL.Node<Integer>(data);
+	            newNode=new Sll.Node<Integer>(data);
 	            sll.insertLast(newNode);
 	            break;                         
 	        case 3 : 
@@ -65,7 +65,7 @@ public class SLLTest {
 	            System.out.println("Enter position");
 	            int pos = scan.nextInt() ;
 	            
-	            newNode=new SLL.Node<Integer>(data);
+	            newNode=new Sll.Node<Integer>(data);
 	            sll.insertAtPosition(newNode, pos);
 	            break; 
 	        case 4 : 
@@ -74,7 +74,7 @@ public class SLLTest {
 	            System.out.println("Enter position");
 	             pos = scan.nextInt() ;
 	            
-	             newNode=new SLL.Node<Integer>(data);
+	             newNode=new Sll.Node<Integer>(data);
 	            sll.insertAfterPosition(newNode, pos);
 	            break; 	  
 	        case 5 : 
@@ -83,7 +83,7 @@ public class SLLTest {
 	            System.out.println("Enter position");
 	             pos = scan.nextInt() ;
 	            
-	             newNode=new SLL.Node<Integer>(data);
+	             newNode=new Sll.Node<Integer>(data);
 	            sll.insertBeforePosition(newNode, pos);
 	            break; 	
 	       case 6 : 
@@ -92,7 +92,7 @@ public class SLLTest {
 	            System.out.println("Enter the data value for new node which will get inserted ");
 	            int insertNodeData = scan.nextInt() ;
 	            
-	            newNode=new SLL.Node<Integer>(insertNodeData);
+	            newNode=new Sll.Node<Integer>(insertNodeData);
 	            sll.insertAtDataNode(data, newNode);
 	            break; 
 	        case 7 : 
@@ -101,7 +101,7 @@ public class SLLTest {
 	            System.out.println("Enter insertNode data value ");
 	             insertNodeData = scan.nextInt() ;
 	            
-	            newNode=new SLL.Node<Integer>(insertNodeData);
+	            newNode=new Sll.Node<Integer>(insertNodeData);
 	            sll.insertAfterDataNode(data, newNode);
 	            break; 
 	        case 8 : 
@@ -110,7 +110,7 @@ public class SLLTest {
 	            System.out.println("Enter insertNode data value ");
 	             insertNodeData = scan.nextInt() ;
 	            
-	             newNode=new SLL.Node<Integer>(insertNodeData);
+	             newNode=new Sll.Node<Integer>(insertNodeData);
 	            sll.insertBeforeDataNode(data, newNode);
 	            break; 
 	            

@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class DLLTest {
 
 	public static void main(String[] args) {
-		DLL<Integer> dll=new DLL<Integer>();
+		Dll<Integer> dll=new Dll<Integer>();
 		
 		System.out.println("Singly Linked List Test\n"); 
 		int choice;
@@ -40,7 +40,7 @@ public class DLLTest {
 	        case 1 : 
 	            System.out.println("Enter integer element to insert");
 	            int data=scan.nextInt();
-	            DLL.Node<Integer> newNode=new DLL.Node<Integer>(data);
+	            Dll.Node<Integer> newNode=new Dll.Node<Integer>(data);
 	            dll.insertFront(newNode);
 	            break;                          
 	        /*case 2 : 

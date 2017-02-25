@@ -1,6 +1,6 @@
 package com.rajeev.dsa.linkedlist;
 
-public class DLL<T> {
+public class Dll<T> {
 
 	private transient Node<T> head;
 
