@@ -1,0 +1,6 @@
+# File pattern which will ignored while git commit
+.classpath
+.project
+.settings
+target/
+
