@@ -80,7 +80,7 @@ public class SLL<T> {
 				head= nodeToInsert;
 				return;
 			}else if(size!=0){// insert the node in the middle or end
-				Node<T> previousNode=this.head;
+				Node<T> previousNode=head;
 		    	int count=1;
 		    	while (count<position-1) {// stop previousNode pointer one node before the position node
 		    		previousNode=previousNode.next;
@@ -88,8 +88,8 @@ public class SLL<T> {
 		    	}
 		    	
 		    	Node<T> currentNode=previousNode.next;
-		    	nodeToInsert.next=(currentNode);
-		    	previousNode.next=(nodeToInsert);
+		    	nodeToInsert.next=currentNode;
+		    	previousNode.next=nodeToInsert;
 		    	return;
 		    }
 		    
@@ -117,8 +117,8 @@ public class SLL<T> {
 		    		currentNode=currentNode.next;
 		    		count++;
 		    	}
-		    	nodeToInsert.next=(currentNode.next);
-		    	currentNode.next=(nodeToInsert);
+		    	nodeToInsert.next=currentNode.next;
+		    	currentNode.next=nodeToInsert;
 		    	return;
 		
 		   
@@ -146,7 +146,7 @@ public class SLL<T> {
 		
 	 
 		if(currentNode.data.equals(nodeData)) {// in case if we need to add in place of first element 
-			nodeToInsert.next=(currentNode);
+			nodeToInsert.next=currentNode;
 			head=nodeToInsert;// here head is modified so need to Reassign
 			return;
 		}
@@ -161,8 +161,8 @@ public class SLL<T> {
 			}
 			
 		}
-		nodeToInsert.next=(currentNode);
-		previousNode.next=(nodeToInsert);
+		nodeToInsert.next=currentNode;
+		previousNode.next=nodeToInsert;
 		return;
 	}
 	
@@ -174,12 +174,12 @@ public class SLL<T> {
 	
 	// Insert After Specific  node in the list (insert after a node whose data is equal to given input)
 	public void insertAfterDataNode(T nodeData,Node<T> nodeToInsert) {
-		if(this.head==null) {
+		if(head==null) {
 			System.out.println("List is Empty ! Please Insert Some node to it and try ");
 			return;
 		}
 		
-		Node<T> currentNode=this.head;
+		Node<T> currentNode=head;
 		while(!currentNode.data.equals(nodeData)) {
 			if(currentNode.next==null ) {
 				System.out.println("No data found ! Please Insert valid node data ");
@@ -190,7 +190,7 @@ public class SLL<T> {
 			
 		}
 		nodeToInsert.next=currentNode.next;
-		currentNode.next=(nodeToInsert);
+		currentNode.next=nodeToInsert;
 		return;
 	}
 	
@@ -217,15 +217,15 @@ public class SLL<T> {
 				previousNode=currentNode;
 				currentNode=currentNode.next;
 			}
-			previousNode.next=(currentNode.next);
+			previousNode.next=currentNode.next;
 			currentNode=null;
-			return ;
+			return;
 		}
 	}
 	
 	public void deleteAtPosition(long position){
 		
-		if(this.head==null) {
+		if(head==null) {
 			return ;
 		}else {
 			
@@ -236,8 +236,8 @@ public class SLL<T> {
 			}
 			
 		}if(position==1) {// deleting node from beginning
-			Node<T> currentNode=(this.head).next;
-			this.head=currentNode;
+			Node<T> currentNode=head.next;
+			head=currentNode;
 			// here old head node will have no active reference and it's memory will be get free  by java garbage collector 
 			// no need to make head null deliberately
 			
@@ -251,16 +251,16 @@ public class SLL<T> {
 				count++;
 			}
 			Node<T> currentNode=previousNode.next;
-			previousNode.next=(currentNode.next);
+			previousNode.next=currentNode.next;
 			currentNode=null;
 			 
 		}
 		return ;	
 	}
 	
-public void deleteAfterPosition(long position){
+	public void deleteAfterPosition(long position){
 		
-		if(this.head==null) {
+		if(head==null) {
 			return ;
 		}else {
 			
@@ -271,31 +271,31 @@ public void deleteAfterPosition(long position){
 			}
 			
 		}if(position==0) {// deleting node from beginning
-			Node<T> currentNode=(this.head).next;
-			this.head=currentNode;
+			Node<T> currentNode=(head).next;
+			head=currentNode;
 			// here old head node will have no active reference and it's memory will be get free  by java garbage collector 
 			// no need to make head null deliberately
 			
 			
 		}else {// deleting node from end or in the middle
 			
-			Node<T> previousNode=this.head;
+			Node<T> previousNode=head;
 			int count=1;
 			while (count<position) {// stop previousNode pointer one node before the position node
 				previousNode=previousNode.next;
 				count++;
 			}
 			Node<T> currentNode=previousNode.next;
-			previousNode.next=(currentNode.next);
+			previousNode.next=currentNode.next;
 			currentNode=null;
 			 
 		}
 		return ;	
 	}
 
-public void deleteBeforePosition(long position){
+	public void deleteBeforePosition(long position){
 	
-	if(this.head==null) {
+	if(head==null) {
 		return ;
 	}else {
 		
@@ -306,22 +306,22 @@ public void deleteBeforePosition(long position){
 		}
 		
 	}if(position==2) {// deleting node from beginning
-		Node<T> currentNode=(this.head).next;
-		this.head=currentNode;
+		Node<T> currentNode=(head).next;
+		head=currentNode;
 		// here old head node will have no active reference and it's memory will be get free  by java garbage collector 
 		// no need to make head null deliberately
 		
 		
 	}else {// deleting node from end or in the middle
 		
-		Node<T> previousNode=this.head;
+		Node<T> previousNode=head;
 		int count=1;
 		while (count<position-2) {// stop previousNode pointer one node before the position node
 			previousNode=previousNode.next;
 			count++;
 		}
 		Node<T> currentNode=previousNode.next;
-		previousNode.next=(currentNode.next);
+		previousNode.next=currentNode.next;
 		currentNode=null;
 		 
 	}
@@ -331,15 +331,15 @@ public void deleteBeforePosition(long position){
 	// Deleting a Specific Node from the list (delete a node whose data is equal to given input)
 	public void deleteDataNode(T nodeData) {
 		
-		if(this.head==null) {
+		if(head==null) {
 			System.out.println("List is Empty ! Please Insert Some node to it and try ");
 			return;
 		}
 		
 		
 
-		Node<T> currentNode=this.head;
-		Node<T> previousNode=this.head;
+		Node<T> currentNode=head;
+		Node<T> previousNode=head;
 		
 		if(currentNode.data.equals(nodeData)) {// in case if we need to delete in place of first element 
 			
@@ -356,7 +356,7 @@ public void deleteBeforePosition(long position){
 			}
 			
 		}
-		previousNode.next=(currentNode.next);
+		previousNode.next=currentNode.next;
 		currentNode=null;
 		return;
 	}
@@ -365,14 +365,14 @@ public void deleteBeforePosition(long position){
 	// Deleting a Specific Node from the list (deleteBeforeDataNode  whose data is equal to given input)
 	public void deleteBeforeDataNode(T nodeData) {
 		
-		if(this.head==null) {
+		if(head==null) {
 			System.out.println("List is Empty ! Please Insert Some node to it and try ");
 			return;
 		}
 
-		Node<T> currentNode=this.head;
-		Node<T> previousNode=this.head;
-		Node<T> PreviousToPreviousNode=this.head;
+		Node<T> currentNode=head;
+		Node<T> previousNode=head;
+		Node<T> PreviousToPreviousNode=head;
 	    if (currentNode.data.equals(nodeData)) {// if user gives first node to delete 
 	    	System.out.println("Invalid Selection ! you can not delete before first node ,Please Insert valid node data ");
 			return;
@@ -392,7 +392,7 @@ public void deleteBeforePosition(long position){
         	head=PreviousToPreviousNode.next;
         	return;
         }
-		PreviousToPreviousNode.next=(currentNode);
+		PreviousToPreviousNode.next=currentNode;
 		previousNode=null;
 		return;
 	}
@@ -400,12 +400,12 @@ public void deleteBeforePosition(long position){
 	//  Deleting a Specific Node from the list (delete a node whose data is equal to given input)
 		public void deleteAfterDataNode(T nodeData) {
 			
-			if(this.head==null) {
+			if(head==null) {
 				System.out.println("List is Empty ! Please Insert Some node to it and try ");
 				return;
 			}
 
-			Node<T> currentNode=this.head;
+			Node<T> currentNode=head;
 			
 			while(!currentNode.data.equals(nodeData)) {
 				if(currentNode.next==null ) {
@@ -422,7 +422,7 @@ public void deleteBeforePosition(long position){
 				Node<T> nextDataNode=currentNode.next;
 				//null check of nextDataNode
 				if(nextDataNode!=null) {// in case user want to delete element after last element ,it will give null pointer exception
-					currentNode.next=(nextDataNode.next);
+					currentNode.next=nextDataNode.next;
 					nextDataNode=null;
 				
 				}else {

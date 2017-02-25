@@ -4,13 +4,7 @@ public class DLL<T> {
 
 	private transient Node<T> head;
 
-	public Node<T> getHead() {
-		return head;
-	}
 
-	public void setHead(Node<T> head) {
-		this.head = head;
-	}
 	
 	public void display() {
 		Node<T> currentNode=head;
@@ -56,25 +50,25 @@ public class DLL<T> {
 	
 	// Insert Front
 	public void insertFront(Node<T> NodeToInsert) {
-		if(this.head==null) {
-			this.head= NodeToInsert;
+		if(head==null) {
+			head= NodeToInsert;
 		}else {
-			NodeToInsert.next=(this.head);
-			this.head.previous=(NodeToInsert);
-			this.head=NodeToInsert;
+			NodeToInsert.next=(head);
+			head.previous=NodeToInsert;
+			head=NodeToInsert;
 		}
 		return;
 	}
 	public void insertLast(Node<T> NodeToInsert) {
-		if(this.head==null) {
-			this.head= NodeToInsert;
+		if(head==null) {
+			head= NodeToInsert;
 		}else {
-		     Node<T> currentNode=this.head;
+		     Node<T> currentNode=head;
 			 while(currentNode.next!=null) {
 				currentNode=currentNode.next;
 			}
-			currentNode.next=(NodeToInsert);
-			NodeToInsert.previous=(currentNode);
+			currentNode.next=NodeToInsert;
+			NodeToInsert.previous=currentNode;
 			// no need to update head since there is no change in head
 		}
 		
@@ -82,10 +76,10 @@ public class DLL<T> {
 	
 	public void insertAtPosition(Node<T> NodeToInsert,long position) {
 		// suppose after inserting the position of this new Node is p
-	    // in list 1 2 3 if we  insert 4 at position 2 then new list will be like this 1 4 2 3 
+		// In list with three elements 1,2,3 if we insert 4 at position 2 then new list will be like this 1,4,2,3 
 		
-		if(this.head==null) {
-			this.head= NodeToInsert;
+		if(head==null) {
+			head= NodeToInsert;
 		}
 	
 		int size=listLength();
@@ -95,11 +89,11 @@ public class DLL<T> {
 		}
 		
 	    if(position==1) {// insert at beginning 
-	    	NodeToInsert.next=(this.head);
-	    	(this.head).previous=(NodeToInsert);
-	    	 this.head= NodeToInsert;
+	    	NodeToInsert.next=(head);
+	    	(head).previous=NodeToInsert;
+	    	 head= NodeToInsert;
 		}else {// insert the Node in the middle or end
-			Node<T> previousNode=this.head;
+			Node<T> previousNode=head;
 	    	int count=1;
 	    	while (count<position-1) {// stop previousNode pointer one Node before the position Node
 	    		previousNode=previousNode.next;
@@ -107,11 +101,11 @@ public class DLL<T> {
 	    	}
 	    	Node<T> currentNode=previousNode.next;
 	    	if(null!=currentNode) {
-	    	 currentNode.previous=(NodeToInsert);
+	    	 currentNode.previous=NodeToInsert;
 	    	}
-	    	previousNode.next=(NodeToInsert);
-	    	NodeToInsert.next=(currentNode);
-	    	NodeToInsert.previous=(previousNode);
+	    	previousNode.next=NodeToInsert;
+	    	NodeToInsert.next=currentNode;
+	    	NodeToInsert.previous=previousNode;
 	    	return;
 	    }
 	}
@@ -119,10 +113,10 @@ public class DLL<T> {
 	
 	public void insertAfterPosition(Node<T> NodeToInsert,long position) {
 		// suppose after inserting the position of this new Node is p
-	    // in list 1 2 3 if we  insert 4 at position 2 then new list will be like this 1 4 2 3 
+	    // In list with three elements 1,2,3 if we insert 4 at position 2 then new list will be like this 1,4,2,3 
 		
-		if(this.head==null) {
-			this.head= NodeToInsert;
+		if(head==null) {
+			head= NodeToInsert;
 		}
 	
 		int size=listLength();
@@ -132,11 +126,11 @@ public class DLL<T> {
 		}
 		
 	    if(position==1) {// insert at beginning 
-	    	NodeToInsert.next=(this.head);
-	    	(this.head).previous=(NodeToInsert);
-	    	 this.head= NodeToInsert;
+	    	NodeToInsert.next=(head);
+	    	(head).previous=NodeToInsert;
+	    	 head= NodeToInsert;
 		}else {// insert the Node in the middle or end
-			Node<T> previousNode=this.head;
+			Node<T> previousNode=head;
 	    	int count=1;
 	    	while (count<position-1) {// stop previousNode pointer one Node before the position Node
 	    		previousNode=previousNode.next;
@@ -144,11 +138,11 @@ public class DLL<T> {
 	    	}
 	    	Node<T> currentNode=previousNode.next;
 	    	if(null!=currentNode) {
-	    	 currentNode.previous=(NodeToInsert);
+	    	 currentNode.previous=NodeToInsert;
 	    	}
-	    	previousNode.next=(NodeToInsert);
-	    	NodeToInsert.next=(currentNode);
-	    	NodeToInsert.previous=(previousNode);
+	    	previousNode.next=NodeToInsert;
+	    	NodeToInsert.next=currentNode;
+	    	NodeToInsert.previous=previousNode;
 	    	return;
 	    }
 	}
@@ -157,8 +151,8 @@ public class DLL<T> {
 		// suppose after inserting the position of this new Node is p
 	    // in list 1 2 3 if we  insert 4 at position 2 then new list will be like this 1 4 2 3 
 		
-		if(this.head==null) {
-			this.head= NodeToInsert;
+		if(head==null) {
+			head= NodeToInsert;
 		}
 	
 		int size=listLength();
@@ -168,11 +162,11 @@ public class DLL<T> {
 		}
 		
 	    if(position==1) {// insert at beginning 
-	    	NodeToInsert.next=(this.head);
-	    	(this.head).previous=(NodeToInsert);
-	    	 this.head= NodeToInsert;
+	    	NodeToInsert.next=(head);
+	    	(head).previous=NodeToInsert;
+	    	 head= NodeToInsert;
 		}else {// insert the Node in the middle or end
-			Node<T> previousNode=this.head;
+			Node<T> previousNode=head;
 	    	int count=1;
 	    	while (count<position-1) {// stop previousNode pointer one Node before the position Node
 	    		previousNode=previousNode.next;
@@ -180,11 +174,11 @@ public class DLL<T> {
 	    	}
 	    	Node<T> currentNode=previousNode.next;
 	    	if(null!=currentNode) {
-	    	 currentNode.previous=(NodeToInsert);
+	    	 currentNode.previous=NodeToInsert;
 	    	}
-	    	previousNode.next=(NodeToInsert);
-	    	NodeToInsert.next=(currentNode);
-	    	NodeToInsert.previous=(previousNode);
+	    	previousNode.next=NodeToInsert;
+	    	NodeToInsert.next=currentNode;
+	    	NodeToInsert.previous=previousNode;
 	    	return;
 	    }
 	}
@@ -192,12 +186,12 @@ public class DLL<T> {
 	
 		// ???Insert at Specific  Node in the list (insert at a Node whose data is equal to given input)
 			public void insertAtData(T NodeData,Node<T> NodeToInsert) {
-				if(this.head==null) {
+				if(head==null) {
 					System.out.println("List is Empty ! Please Insert Some Node to it and try ");
 					return;
 				}
 				
-				Node<T> currentNode=this.head;
+				Node<T> currentNode=head;
 				while(!currentNode.data.equals(NodeData)) {
 					if(currentNode.next==null ) {
 						System.out.println("No data found ! Please Insert valid Node data ");
@@ -207,20 +201,20 @@ public class DLL<T> {
 					}
 					
 				}
-				NodeToInsert.next=(currentNode.next);
-				NodeToInsert.previous=(currentNode);
-				currentNode.next=(NodeToInsert);
+				NodeToInsert.next=currentNode.next;
+				NodeToInsert.previous=currentNode;
+				currentNode.next=NodeToInsert;
 				return;
 		}
 			
 	// Insert After Specific  Node in the list (insert after a Node whose data is equal to given input)
 		public void insertAfterData(T NodeData,Node<T> NodeToInsert) {
-			if(this.head==null) {
+			if(head==null) {
 				System.out.println("List is Empty ! Please Insert Some Node to it and try ");
 				return;
 			}
 			
-			Node<T> currentNode=this.head;
+			Node<T> currentNode=head;
 			while(!currentNode.data.equals(NodeData)) {
 				if(currentNode.next==null ) {
 					System.out.println("No data found ! Please Insert valid Node data ");
@@ -230,20 +224,20 @@ public class DLL<T> {
 				}
 				
 			}
-			NodeToInsert.next=(currentNode.next);
-			NodeToInsert.previous=(currentNode);
-			currentNode.next=(NodeToInsert);
+			NodeToInsert.next=currentNode.next;
+			NodeToInsert.previous=currentNode;
+			currentNode.next=NodeToInsert;
 			return;
 		}
 		
 		// Insert After Specific  Node in the list (insert after a Node whose data is equal to given input)
 		public void insertBeforeData(T NodeData,Node<T> NodeToInsert) {
-			if(this.head==null) {
+			if(head==null) {
 				System.out.println("List is Empty ! Please Insert Some Node to it and try ");
 				return;
 			}
 			
-			Node<T> currentNode=this.head;
+			Node<T> currentNode=head;
 			while(!currentNode.data.equals(NodeData)) {
 				if(currentNode.next==null ) {
 					System.out.println("No data found ! Please Insert valid Node data ");
@@ -253,9 +247,9 @@ public class DLL<T> {
 				}
 				
 			}
-			NodeToInsert.next=(currentNode);
-			NodeToInsert.previous=(currentNode.previous);
-			currentNode.previous=(NodeToInsert);
+			NodeToInsert.next=currentNode;
+			NodeToInsert.previous=currentNode.previous;
+			currentNode.previous=NodeToInsert;
 			return;
 		}
 		
