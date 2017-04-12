@@ -3,7 +3,7 @@ package com.rajeev.dsa.linkedlist;
 import java.util.Scanner;
 
 
-public class SLLTest {
+public class SllTest {
 	public static void main(String[] args) {
 		Sll<Integer> sll=new Sll<Integer>();
 		
@@ -31,12 +31,13 @@ public class SLLTest {
         System.out.println("14. delete given data node");
         System.out.println("15. delete node after given data node");
         System.out.println("16. delete node before given data node");
+        System.out.println("17. delete whole List");
         
-        
-        System.out.println("17. check empty");
-        System.out.println("18. get size");
-        System.out.println("19. display list");
-        System.out.println("20. exit ");
+        System.out.println("18. check empty");
+        System.out.println("19. get size");
+        System.out.println("20. display list");
+        System.out.println("21. display LinkedList in reverse order");
+        System.out.println("22. exit ");
         System.out.println("\n Choose any of above integer value to perform corresponding SinglyLinkedList Operations ");
 		do
 	    {
@@ -157,22 +158,31 @@ public class SLLTest {
 	            sll.deleteBeforeDataNode(data);
 	            break;
 	        case 17 : 
+	            System.out.println("deleting the list .... ");
+	            sll.deleteList();
+	            System.out.println("List deleted !");
+	            break;
+	        case 18 : 
 	        	boolean isEmpty=sll.isEmpty();
 	        	 System.out.println("Empty status = "+isEmpty);
 	            break;                   
-	        case 18 : 
+	        case 19 : 
 	           System.out.println("Size = "+ sll.listLength()+" \n");
 	           break;  
 	            
-	        case 19 : 
+	        case 20 : 
 	        	/*  print List  */ 
 	        	 sll.display();
 	            break; 
-	        case 20 : 
+	        case 21 : 
+	        	/*  print List in Reverse order */ 
+	        	 sll.reverseDisplay();
+	            break; 
+	        case 22 : 
 	        	/*  print List  */ 
 	        	 scan.close();
 	        	 System.exit(1);
-	            break; 
+	            break;
 	         default : 
 	            System.out.println("Wrong Entry");
 	            break;   

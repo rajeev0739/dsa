@@ -7,6 +7,9 @@ public class Sll<T> {
 	private transient Node<T> head;
 
 
+	public Node<T> getNode(T data) {
+		return new Sll.Node<T>(data);
+	}
 	
 	public void display() {
 		Node<T> currentNode=head;
@@ -17,6 +20,10 @@ public class Sll<T> {
 		}
 		System.out.print("null]");
 		
+	}
+	
+	public void reverseDisplay() {
+		// to do
 	}
 	
 	public int listLength() {
@@ -44,6 +51,14 @@ public class Sll<T> {
 		return;
 	}
 	
+	
+	
+	public void insertFront(T dataToInsert) {
+		Node<T> nodeToInsert=getNode(dataToInsert);
+		insertFront(nodeToInsert);
+		return;
+	}
+	
 	public void insertLast(Node<T> nodeToInsert) {
 		if(head==null) {
 			head= nodeToInsert;
@@ -60,6 +75,12 @@ public class Sll<T> {
 		
 	}
 	
+	
+	public void insertLast(T dataToInsert) {
+		Node<T> nodeToInsert=getNode(dataToInsert);
+		insertLast(nodeToInsert);
+		
+	}
 	
 	public void insertAtPosition(Node<T> nodeToInsert,long position) {
 			// suppose after inserting the position of this new node is p
@@ -95,6 +116,14 @@ public class Sll<T> {
 		    
 		}
 	
+	public void insertAtPosition(T dataToInsert,long position) {
+		// suppose after inserting the position of this new node is p
+	    // in list 1 2 3 if we  insert 4 at position 2 then new list will be like this 1 4 2 3 
+		Node<T> nodeToInsert=getNode(dataToInsert);
+		insertAtPosition(nodeToInsert,position);
+	    
+	}
+	
 	
 	public void insertAfterPosition(Node<T> nodeToInsert,long position) {
 			// suppose after inserting the position of this new node is p
@@ -103,7 +132,7 @@ public class Sll<T> {
 			
 			if(size==0 || position>size || position<1 ) {
 				if(size==0)
-					System.out.println(" Invalid Position");
+					System.out.println("List is Empty");
 				else 
 					System.out.println(" Invalid Position , Valid position is 1 to "+size);
 				return;
@@ -125,10 +154,29 @@ public class Sll<T> {
 		    
 		}
 	
+	public void insertAfterPosition(T dataToInsert,long position) {
+		// suppose after inserting the position of this new node is p
+	    // in list 1 2 3 if we  insert 4 at position 2 then new list will be like this 1 4 2 3 
+		Node<T> nodeToInsert=getNode(dataToInsert);
+		insertAfterPosition(nodeToInsert,position);
+	   
+	    
+	}
+	
+	
+	
 	public void insertBeforePosition(Node<T> nodeToInsert,long position) {// same as insert at position 
 		// suppose after inserting the position of this new node is p
 	    // in list 1 2 3 if we  insert 4 at position 2 then new list will be like this 1 4 2 3 
 		insertAtPosition( nodeToInsert, position);
+		return;
+		
+	}
+	public void insertBeforePosition(T dataToInsert,long position) {// same as insert at position 
+		// suppose after inserting the position of this new node is p
+	    // in list 1 2 3 if we  insert 4 at position 2 then new list will be like this 1 4 2 3 
+		Node<T> nodeToInsert=getNode(dataToInsert);
+		insertBeforePosition( nodeToInsert, position);
 		return;
 		
 	}
@@ -166,9 +214,20 @@ public class Sll<T> {
 		return;
 	}
 	
+	public void insertAtDataNode(T nodeData,T dataToInsert) {
+		Node<T> nodeToInsert=getNode(dataToInsert);
+		insertAtDataNode(nodeData,nodeToInsert);
+	}
+	
 	// Insert Before a Data Node in the list (insert before a node whose data is equal to given input)
 	public void insertBeforeDataNode(T nodeData,Node<T> nodeToInsert) {// same insert at data node
 		insertAtDataNode(nodeData,nodeToInsert);
+		
+	}
+	
+	public void insertBeforeDataNode(T nodeData,T dataToInsert) {
+		Node<T> nodeToInsert=getNode(dataToInsert);
+		insertBeforeDataNode(nodeData,nodeToInsert);
 		
 	}
 	
@@ -193,7 +252,10 @@ public class Sll<T> {
 		currentNode.next=nodeToInsert;
 		return;
 	}
-	
+	public void insertAfterDataNode(T nodeData,T dataToInsert) {
+		Node<T> nodeToInsert=getNode(dataToInsert);
+		insertAfterDataNode(nodeData,nodeToInsert);
+	}
  
 	public void deleteFront() {
 		
@@ -201,6 +263,7 @@ public class Sll<T> {
 			return;
 		}else {
 			Node<T> currentNode=head.next;
+			//head.next=null;
 			head=currentNode;
 			// here old head node will have no active reference and it's memory will be get free  by java garbage collector 
 			// no need to make head null deliberately
@@ -318,7 +381,7 @@ public class Sll<T> {
 		int count=1;
 		while (count<position-2) {// stop previousNode pointer one node before the position node
 			previousNode=previousNode.next;
-			count++;
+			count++ ;
 		}
 		Node<T> currentNode=previousNode.next;
 		previousNode.next=currentNode.next;
@@ -429,6 +492,18 @@ public class Sll<T> {
 				   System.out.println("Invalid selection ! Please Select valid  data node ");
 			    }
 			
+			return;
+		}
+		
+		public void deleteList() {
+			Node<T> iterator=head,tempNode;
+			while(iterator!=null) {
+				tempNode=iterator.next;
+				
+				iterator.next=null;// Since In java only those Node objects will get garbage collected who doesn't have any active reference ,and since each node next have reference of it's next node , we need to make next of each node null as well.
+				iterator=tempNode;
+				
+			}
 			return;
 		}
 		
